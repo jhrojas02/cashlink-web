@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CashLink — Tu dinero, donde quieras y cuando quieras</title>
+  <meta name="description" content="CashLink: la primera billetera digital que convierte tu comunidad en una red segura de cajeros distribuidos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#ffffff;
+      --muted:#6b7280;
+      --blue-600:#0f62fe; /* primary blue */
+      --green-500:#16a34a; /* primary green */
+      --card:#f8fafc;
+      --glass: rgba(255,255,255,0.6);
+      --radius:16px;
+      --shadow: 0 6px 20px rgba(15,22,39,0.08);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#fbfdff 0%, #f6fbf9 100%);color:#0b1220;line-height:1.45}
+    .container{max-width:1100px;margin:0 auto;padding:32px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--blue-600),var(--green-500));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    nav{display:flex;gap:18px;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:12px;font-weight:600;border:0;cursor:pointer}
+    .btn-primary{background:linear-gradient(90deg,var(--blue-600),#2b9fff);color:#fff;box-shadow:var(--shadow)}
+    .btn-ghost{background:transparent;color:var(--blue-600);border:1px solid rgba(15,98,254,0.12)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center;padding:48px 0}
+    .hero h1{font-size:36px;margin:0 0 12px}
+    .hero p.lead{margin:0;color:var(--muted);font-size:16px}
+    .hero-actions{margin-top:22px;display:flex;gap:12px}
+    .phone-mock{background:linear-gradient(180deg,#fff,#f7fbff);border-radius:28px;padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center}
+    .mock-screen{width:260px;height:480px;border-radius:20px;background:linear-gradient(180deg,#ffffff,#f2f8ff);display:flex;flex-direction:column;padding:14px;gap:12px}
+    .mock-balance{font-weight:700;font-size:20px}
+
+    /* Sections */
+    section{padding:48px 0;border-top:1px solid rgba(11,18,32,0.03)}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);padding:20px;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .icon{width:44px;height:44px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:#fff}
+    h3{margin:0 0 8px}
+    .muted{color:var(--muted)}
+
+    /* CTA */
+    .cta{display:flex;gap:12px;align-items:center}
+
+    footer{padding:36px 0;color:var(--muted);font-size:14px}
+
+    /* Responsiveness */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;padding:24px 0}
+      .grid-3{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">CL</div>
+        <div>
+          <div style="font-weight:700">CashLink</div>
+          <div style="font-size:12px;color:var(--muted)">Tu dinero, donde quieras y cuando quieras</div>
+        </div>
+      </div>
+      <nav>
+        <button class="btn btn-ghost" onclick="document.getElementById('problems').scrollIntoView({behavior:'smooth'})">Problemas</button>
+        <button class="btn btn-ghost" onclick="document.getElementById('solution').scrollIntoView({behavior:'smooth'})">Nuestra solución</button>
+        <button class="btn btn-primary" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Únete a la red</button>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <main class="hero">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+          <span style="background:linear-gradient(90deg,var(--green-500),var(--blue-600));color:#fff;padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px">Lanzamiento — Colombia</span>
+          <span style="color:var(--muted);font-size:14px">Red de puntos y comunidad</span>
+        </div>
+        <h1>CashLink: Tu dinero, donde quieras y cuando quieras</h1>
+        <p class="lead">La primera billetera digital que convierte tu comunidad en una red segura de cajeros distribuidos.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-primary">📥 Descargar App</a>
+          <a href="#solution" class="btn btn-ghost">ℹ️ Conocer más</a>
+        </div>
+
+        <div style="margin-top:28px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+          <div class="card" style="display:flex;gap:12px;align-items:center">
+            <div class="icon">💳</div>
+            <div>
+              <div style="font-weight:700">Puntos de cambio</div>
+              <div class="muted" style="font-size:13px">Convenciones con cafés, farmacias y más</div>
+            </div>
+          </div>
+          <div class="card" style="display:flex;gap:12px;align-items:center">
+            <div class="icon">🤝</div>
+            <div>
+              <div style="font-weight:700">Red Amiga</div>
+              <div class="muted" style="font-size:13px">Intercambios entre vecinos con Trust Score</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="phone-mock">
+        <div style="font-size:12px;color:var(--muted);margin-bottom:8px">Vista de la app</div>
+        <div class="mock-screen">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div style="font-size:13px;color:var(--muted)">Saldo</div>
+            <div style="font-size:13px;color:var(--muted)">Hoy</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px">
+            <div class="mock-balance">COP 180.000</div>
+            <div style="font-size:13px;color:var(--muted)">Activa intercambio — Punto cercano: Café Verde</div>
+          </div>
+          <div style="flex:1;display:flex;align-items:end;justify-content:center;font-size:12px;color:var(--muted)">Tarjetas redondeadas, interacción clara</div>
+        </div>
+        <div style="margin-top:12px;display:flex;gap:8px;width:100%">
+          <button class="btn btn-primary" style="flex:1">Abrir App</button>
+          <button class="btn btn-ghost" style="flex:1">Iniciar sesión</button>
+        </div>
+      </aside>
+    </main>
+
+    <!-- PROBLEMAS IDENTIFICADOS -->
+    <section id="problems">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
+        <div style="max-width:680px">
+          <h2>Problemas identificados</h2>
+          <p class="muted">En Colombia muchas personas y comercios enfrentan fricciones para acceder a efectivo o convertir dinero digital en efectivo de forma segura y asequible.</p>
+          <ul style="color:var(--muted);">
+            <li>Usuarios que dependen de cajeros escasos y costosos.</li>
+            <li>Dificultad para retirar efectivo de billeteras digitales.</li>
+            <li>Comercios pequeños que necesitan efectivo pero tienen dinero digital acumulado.</li>
+          </ul>
+        </div>
+        <div style="width:320px">
+          <div class="card">
+            <h3>Impacto</h3>
+            <p class="muted">Costos de retiro, pérdida de flujo para microcomercios y exclusión de usuarios sin acceso a cajeros.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOLUCIÓN -->
+    <section id="solution">
+      <h2>Nuestra solución</h2>
+      <p class="muted">CashLink facilita intercambios instantáneos y seguros entre efectivo y dinero digital a través de una combinación de puntos físicos, confianza comunitaria y herramientas técnicas.</p>
+
+      <div class="grid-3" style="margin-top:18px">
+        <div class="card">
+          <div style="display:flex;gap:12px;align-items:center;margin-bottom:8px"><div class="icon">🏪</div><strong>Puntos de cambio seguros</strong></div>
+          <p class="muted">Convenios con cafés, farmacias, universidades, centros comerciales, estaciones de servicio y coworkings para ofrecer retiro/depósito con horarios y tarifas claras.</p>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;gap:12px;align-items:center;margin-bottom:8px"><div class="icon">🫂</div><strong>Red Amiga</strong></div>
+          <p class="muted">Conexiones dentro de la comunidad con Trust Score dinámico y grupos cerrados. Los usuarios forman redes de confianza para intercambios rápidos.</p>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;gap:12px;align-items:center;margin-bottom:8px"><div class="icon">💬</div><strong>Chat comunitario anónimo</strong></div>
+          <p class="muted">Publica cuánto efectivo necesitas de forma anónima (visible solo en tu comunidad). Otros miembros pueden contactar para concretar el intercambio con escrow.</p>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:16px">
+        <div class="card">
+          <div style="display:flex;gap:12px;align-items:center;margin-bottom:8px"><div class="icon">📍</div><strong>Sistema de Vecinos Cercanos</strong></div>
+          <p class="muted">Conecta personas en un radio geográfico cercano, incluso si no son de la misma comunidad. Intercambios con escrow, geolocalización y Trust Score global.</p>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;gap:12px;align-items:center;margin-bottom:8px"><div class="icon">🔒</div><strong>Escrow & Seguridad</strong></div>
+          <p class="muted">Los fondos quedan en custodia digital hasta que ambas partes confirmen la operación. Integración con KYC y validación biométrica.</p>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;gap:12px;align-items:center;margin-bottom:8px"><div class="icon">📊</div><strong>Analítica y ahorro</strong></div>
+          <p class="muted">Herramientas para ahorrar digitalmente y ver patrones de gasto. Microcréditos rápidos para flujo de caja.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUNCIONES -->
+    <section>
+      <h2>Funciones principales</h2>
+      <div class="grid-3" style="margin-top:18px">
+        <div class="card">
+          <h3>Transacciones</h3>
+          <p class="muted">Recibir, guardar y transferir dinero de forma inmediata. Pagos con QR y POS virtual. Envío y recepción entre usuarios.</p>
+        </div>
+        <div class="card">
+          <h3>Microcréditos</h3>
+          <p class="muted">Pequeñas líneas de crédito para necesidades urgentes de liquidez, con condiciones claras y plazos cortos.</p>
+        </div>
+        <div class="card">
+          <h3>Seguridad</h3>
+          <p class="muted">Validación biométrica, KYC, escrow digital, Trust Score y póliza de respaldo en casos verificados de robo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFICIOS COMERCIOS -->
+    <section>
+      <h2>Beneficios para comercios aliados</h2>
+      <div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;margin-top:12px">
+        <div class="card" style="flex:1;min-width:260px">
+          <h3>Comisiones por intercambio</h3>
+          <p class="muted">El comercio recibe una comisión por cada intercambio que facilita a través de CashLink.</p>
+        </div>
+        <div class="card" style="flex:1;min-width:260px">
+          <h3>Mayor tráfico</h3>
+          <p class="muted">Recibe clientes que acuden a tu punto de cambio, aumentando ventas y fidelidad.</p>
+        </div>
+        <div class="card" style="flex:1;min-width:260px">
+          <h3>Digitaliza ingresos</h3>
+          <p class="muted">Convierte dinero digital en efectivo y reduce fricciones operativas para negocios pequeños.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" style="text-align:center">
+      <div style="max-width:760px;margin:0 auto">
+        <h2>Únete a la red CashLink</h2>
+        <p class="muted">Sé parte de la primera red que combina puntos físicos y confianza comunitaria para hacer efectivo lo digital.</p>
+        <div class="cta" style="justify-content:center;margin-top:18px">
+          <a href="#" class="btn btn-primary">Únete a la red CashLink</a>
+          <a href="#" class="btn btn-ghost">Soy un comercio aliado</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
+        <div style="display:flex;gap:12px;align-items:center">
+          <div class="logo" style="width:36px;height:36px;font-size:14px">CL</div>
+          <div>
+            <div style="font-weight:700">CashLink</div>
+            <div class="muted" style="font-size:12px">Hecho para comunidades en Colombia</div>
+          </div>
+        </div>
+        <div class="muted">Contacto: hola@cashlink.app • Política de privacidad • Términos</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Small interactions: smooth scroll already used on buttons
+    // Placeholder for future JS: geolocation, escrow flows, trust-score UI, etc.
+    (function(){
+      // Example: detect prefers-reduced-motion
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.style.scrollBehavior = 'auto';
+      }
+    })();
+  </script>
+</body>
+</html>
