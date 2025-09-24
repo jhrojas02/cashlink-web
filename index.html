@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CashLink — Tu dinero, donde quieras y cuando quieras</title>
+  <meta name="description" content="CashLink: la primera billetera digital que convierte tu comunidad en una red segura de cajeros distribuidos." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fbfcfe;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --blue: #0f62fe;
+      --blue-2:#2b9fff;
+      --green:#16a34a;
+      --glass: rgba(255,255,255,0.8);
+      --radius:16px;
+      --shadow: 0 10px 30px rgba(16,24,40,0.07);
+      --soft-shadow: 0 6px 18px rgba(16,24,40,0.06);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,#fbfdff 0%, #f6fbf9 100%);
+      color:#071022;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      font-size:16px;
+    }
+
+    .wrap{max-width:1100px;margin:0 auto;padding:28px;}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:8px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{
+      width:56px;height:56px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;
+      background:linear-gradient(135deg,var(--blue),var(--green));
+      box-shadow:var(--soft-shadow);
+      font-size:18px;
+    }
+    .brand small{display:block;color:var(--muted);font-size:12px}
+    nav{display:flex;gap:12px;align-items:center}
+    .btn{
+      border:0;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+      box-shadow:none;
+    }
+    .btn-ghost{background:transparent;color:var(--blue);border:1px solid rgba(15,98,254,0.12)}
+    .btn-primary{background:linear-gradient(90deg,var(--blue),var(--blue-2));color:#fff;box-shadow:var(--shadow)}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns: 1fr 420px;gap:36px;align-items:start;padding:22px 0}
+    .eyebrow{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--green),var(--blue));color:#fff;font-weight:700;font-size:12px}
+    h1{font-size:28px;margin:10px 0 6px;line-height:1.08}
+    .subtitle{color:var(--muted);margin-bottom:16px}
+    .hero-actions{display:flex;gap:12px;margin-top:10px}
+    .hero-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px}
+    .small-card{background:var(--card);padding:12px;border-radius:12px;box-shadow:var(--soft-shadow);display:flex;gap:10px;align-items:center}
+    .small-card svg{width:32px;height:32px;flex:0 0 32px}
+
+    /* phone mock / hero image */
+    .hero-visual{background:var(--card);border-radius:18px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center}
+    .hero-visual img{width:100%;height:auto;border-radius:12px;display:block;object-fit:cover}
+
+    /* Sections */
+    section{padding:48px 0;border-top:1px solid rgba(11,18,32,0.03)}
+    h2{margin:0 0 8px;font-size:20px}
+    p.lead{color:var(--muted);margin:0 0 18px}
+
+    /* Problems grid */
+    .problems{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+    .problem{background:var(--card);padding:22px;border-radius:12px;box-shadow:var(--soft-shadow);min-height:130px}
+    .problem h3{margin:0 0 8px;font-size:16px}
+    .problem p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Solution cards */
+    .stack{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:20px}
+    .feature{background:var(--card);padding:18px;border-radius:14px;box-shadow:var(--soft-shadow);display:flex;gap:12px;align-items:flex-start}
+    .feature svg{width:40px;height:40px;flex:0 0 40px}
+
+    /* Functions grid */
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+    .feature-card{background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--soft-shadow);min-height:110px}
+    .feature-card h4{margin:0 0 8px;font-size:15px}
+    .feature-card p{margin:0;color:var(--muted);font-size:13px}
+
+    /* Security grid */
+    .security-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+    .benefits{display:flex;gap:18px;align-items:center;margin-top:18px;flex-wrap:wrap}
+    .benefits .b{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--soft-shadow);min-width:200px;flex:1}
+
+    /* CTA */
+    .cta{background:linear-gradient(180deg,#071022 0%, #071022 100%);color:#fff;padding:34px;border-radius:14px;margin-top:30px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .cta .left{max-width:760px}
+    .cta .cta-btn{background:linear-gradient(90deg,var(--green),var(--blue));padding:14px 20px;border-radius:12px;color:#fff;font-weight:700;text-decoration:none}
+
+    footer{margin-top:28px;padding:28px 0;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+
+    /* Responsive */
+    @media (max-width:1024px){
+      .hero{grid-template-columns:1fr 360px}
+      .problems{grid-template-columns:1fr 1fr;grid-auto-rows:minmax(120px,auto)}
+      .features-grid{grid-template-columns:1fr 1fr}
+      .security-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:760px){
+      .hero{grid-template-columns:1fr;gap:18px}
+      .hero-visual{order: -1}
+      .hero-cards{grid-template-columns:1fr;grid-auto-rows:minmax(60px,auto)}
+      .stack{grid-template-columns:1fr}
+      .features-grid{grid-template-columns:1fr}
+      .security-grid{grid-template-columns:1fr}
+      .cta{flex-direction:column;align-items:stretch}
+      header{padding-bottom:8px}
+      .logo{width:48px;height:48px}
+    }
+
+    /* small helpers */
+    .muted{color:var(--muted)}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--green),var(--blue));color:#fff;font-weight:700;font-size:12px}
+    .icon-box{width:44px;height:44px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:var(--soft-shadow)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">CL</div>
+        <div>
+          <div style="font-weight:700">CashLink</div>
+          <small>Tu dinero, donde quieras y cuando quieras</small>
+        </div>
+      </div>
+
+      <nav>
+        <a class="btn btn-ghost" href="#problems">Problemas</a>
+        <a class="btn btn-ghost" href="#solution">Nuestra solución</a>
+        <a class="btn btn-primary" href="#cta">Únete</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <main class="hero" role="main" aria-label="Hero principal">
+      <div>
+        <span class="eyebrow">Lanzamiento · Colombia</span>
+        <h1>CashLink: <span style="color:var(--muted);font-weight:500">Tu dinero,</span> <span style="color:var(--green)">donde quieras</span> y cuando quieras</h1>
+        <p class="subtitle">La primera billetera digital que convierte tu comunidad en una red segura de cajeros distribuidos.</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#" aria-label="Descargar App">📥 Descargar App</a>
+          <a class="btn btn-ghost" href="#solution">ℹ️ Conocer más</a>
+        </div>
+
+        <div class="hero-cards" aria-hidden="true">
+          <div class="small-card">
+            <!-- simple svg icon -->
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="5" width="20" height="14" rx="2" fill="#fff" stroke="#e6eefc"/></svg>
+            <div>
+              <div style="font-weight:700">Puntos de cambio</div>
+              <div class="muted" style="font-size:13px">Cafés, farmacias y más</div>
+            </div>
+          </div>
+
+          <div class="small-card">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="3" fill="#fff" stroke="#efe9ff"/></svg>
+            <div>
+              <div style="font-weight:700">Red Amiga</div>
+              <div class="muted" style="font-size:13px">Trust Score dinámico</div>
+            </div>
+          </div>
+
+          <div class="small-card">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18" stroke="#f0f4ff"/></svg>
+            <div>
+              <div style="font-weight:700">Escrow seguro</div>
+              <div class="muted" style="font-size:13px">Fondos en custodia hasta confirmar</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-visual" aria-hidden="true">
+        <!-- Reemplaza /assets/hero.jpg por tu imagen -->
+        <img src="https://images.unsplash.com/photo-1612832020514-5f3fd3308c56?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=9bd9c3c5c0b6b2f2c3b4dd4b4f8e9bfb" alt="Mockup app CashLink">
+      </aside>
+    </main>
+
+    <!-- PROBLEMAS -->
+    <section id="problems" aria-labelledby="problems-title">
+      <h2 id="problems-title">Problemas que resolvemos</h2>
+      <p class="lead">Identificamos los desafíos financieros más comunes en Colombia</p>
+
+      <div class="problems" role="list">
+        <article class="problem" role="listitem">
+          <h3>Cajeros escasos y costosos</h3>
+          <p class="muted">Los usuarios dependen de cajeros automáticos ubicados lejos o cobran altas comisiones por retiros.</p>
+        </article>
+
+        <article class="problem" role="listitem">
+          <h3>Dificultad para retirar efectivo</h3>
+          <p class="muted">Las billeteras digitales no siempre ofrecen opciones fáciles y seguras para convertir dinero digital a efectivo.</p>
+        </article>
+
+        <article class="problem" role="listitem">
+          <h3>Comercios con liquidez limitada</h3>
+          <p class="muted">Pequeños comercios necesitan efectivo para operar pero acumulan dinero digital sin alternativa de retiro eficiente.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SOLUCIÓN -->
+    <section id="solution" aria-labelledby="solution-title">
+      <h2 id="solution-title">Nuestra solución</h2>
+      <p class="lead">CashLink es una billetera digital que permite intercambiar efectivo y dinero digital en cualquier momento a través de:</p>
+
+      <div class="stack" role="list">
+        <div class="feature" role="listitem">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="14" x="2" y="5" rx="2" fill="#fff"/></svg>
+          <div>
+            <strong>Puntos de cambio seguros</strong>
+            <p class="muted" style="margin-top:8px">Convenios con cafés, farmacias, universidades, centros comerciales, estaciones de servicio y coworkings.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3" fill="#fff"/></svg>
+          <div>
+            <strong>Red Amiga</strong>
+            <p class="muted" style="margin-top:8px">Conexiones dentro de la comunidad con Trust Score dinámico y grupos cerrados de confianza.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <svg viewBox="0 0 24 24"><path d="M4 7h16v10H4z" fill="#fff"/></svg>
+          <div>
+            <strong>Chat comunitario anónimo</strong>
+            <p class="muted" style="margin-top:8px">Publica necesidades de efectivo de forma anónima, visible solo en tu comunidad; otros pueden contactarte.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <svg viewBox="0 0 24 24"><path d="M12 2v20" stroke="#eee"/></svg>
+          <div>
+            <strong>Sistema de Vecinos Cercanos</strong>
+            <p class="muted" style="margin-top:8px">Conexiones geográficas con escrow, geolocalización y Trust Score global.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- funciones -->
+      <div style="margin-top:32px">
+        <h3 style="margin-bottom:8px">Funciones básicas de una billetera digital</h3>
+        <p class="muted">Todas las funcionalidades que esperas en una billetera moderna</p>
+
+        <div class="features-grid" role="list">
+          <div class="feature-card">
+            <h4>Transferencias instantáneas</h4>
+            <p class="muted">Recibir, guardar y transferir dinero de forma inmediata.</p>
+          </div>
+          <div class="feature-card">
+            <h4>Pagos con QR y POS virtual</h4>
+            <p class="muted">Pago en comercios usando código QR o POS virtual integrado.</p>
+          </div>
+          <div class="feature-card">
+            <h4>Envío y recepción</h4>
+            <p class="muted">Transfiere dinero entre usuarios de forma rápida y segura.</p>
+          </div>
+          <div class="feature-card">
+            <h4>Microcréditos</h4>
+            <p class="muted">Líneas de crédito de bajo monto para necesidades urgentes de liquidez.</p>
+          </div>
+          <div class="feature-card">
+            <h4>Ahorro digital</h4>
+            <p class="muted">Herramientas de ahorro y analítica de gastos.</p>
+          </div>
+          <div class="feature-card">
+            <h4>Validación biométrica & KYC</h4>
+            <p class="muted">Seguridad avanzada con biometría y procesos KYC integrados.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEGURIDAD -->
+    <section aria-labelledby="security-title">
+      <h2 id="security-title">Seguridad reforzada</h2>
+      <p class="lead">Tu seguridad es nuestra prioridad, con múltiples capas de protección.</p>
+
+      <div class="security-grid" role="list">
+        <div class="feature-card">
+          <h4>Escrow digital</h4>
+          <p class="muted">Fondos en custodia hasta confirmación de la transacción.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Geolocalización</h4>
+          <p class="muted">Seguimiento en tiempo real para transacciones y puntos de cambio.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Ubicación compartida</h4>
+          <p class="muted">Opcional: comparte ubicación con un contacto de confianza.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Póliza de respaldo</h4>
+          <p class="muted">Cobertura y soporte en casos verificados de robo o fraude.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFICIOS COMERCIOS -->
+    <section aria-labelledby="benefits-title">
+      <h2 id="benefits-title">Beneficios para comercios aliados</h2>
+      <p class="muted">Únete a nuestra red y obtén beneficios exclusivos</p>
+
+      <div class="benefits" role="list">
+        <div class="b">
+          <strong>Comisiones por intercambio</strong>
+          <p class="muted" style="margin-top:8px">El comercio recibe una comisión por cada intercambio que facilita.</p>
+        </div>
+        <div class="b">
+          <strong>Mayor tráfico</strong>
+          <p class="muted" style="margin-top:8px">Atrae clientes que buscan puntos de cambio cercanos.</p>
+        </div>
+        <div class="b">
+          <strong>Digitalización</strong>
+          <p class="muted" style="margin-top:8px">Convierte ingresos digitales en efectivo de forma ordenada.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" aria-labelledby="cta-title">
+      <div class="cta" role="region" aria-label="Llamado a la acción">
+        <div class="left">
+          <h2 id="cta-title" style="color:#fff;margin:0 0 6px">Únete a la revolución financiera</h2>
+          <p style="color:rgba(255,255,255,0.8);margin:0">Forma parte de la red de confianza más grande de Colombia.</p>
+        </div>
+
+        <div style="display:flex;gap:12px;align-items:center">
+          <a class="cta-btn" href="#">Únete a la red CashLink</a>
+          <a class="btn btn-ghost" href="#" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.12)">Soy un comercio aliado</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="logo" style="width:44px;height:44px;font-size:13px">CL</div>
+        <div>
+          <div style="font-weight:700">CashLink</div>
+          <div class="muted" style="font-size:12px">Hecho para comunidades en Colombia</div>
+        </div>
+      </div>
+
+      <div class="muted">© <span id="year"></span> CashLink · hola@cashlink.app · Términos · Política de privacidad</div>
+    </footer>
+  </div>
+
+  <script>
+    // small helpers
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
