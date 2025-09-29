@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>CashLink Colombia</title>
+  <style>
+    body, button, input, textarea, select, h1, h2, h3, h4, h5, h6 {
+      font-family: 'Segoe UI', 'SegoeUI', Arial, sans-serif !important;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+    :root {
+      --gold: #F4C17A;
+      --gold-gradient: linear-gradient(135deg,#f7c982 0%, #ecc880 100%);
+      --btn-gold-gradient: linear-gradient(90deg,#eacb90 0%, #c7b080 50%, #222 100%);
+      --btn-gold-shadow: 0 4px 18px #eacb9050;
+    }
+    body {
+      margin: 0;
+      background: #fff;
+      color: #222;
+      font-size: 17px;
+    }
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 36px 8px 36px;
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    }
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: 0;
+      user-select: none;
+    }
+    .navbar-logo .logo-img {
+      width: 38px;
+      height: 38px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .navbar-logo .logo-text {
+      font-weight: 500;
+      color: #222;
+      letter-spacing: 0;
+      margin-left: 0px;
+    }
+    .navbar-menu {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      font-size: 1.13rem;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+    .navbar-menu a {
+      color: #222;
+      text-decoration: none;
+      transition: color 0.15s;
+      position: relative;
+      padding: 2px 0;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 17px;
+      letter-spacing: 0;
+    }
+    .navbar-menu a:hover,
+    .navbar-menu a:focus {
+      color: var(--gold);
+    }
+    .navbar-menu a.active {
+      color: #222 !important;
+    }
+    @media (max-width: 900px) {
+      .navbar {
+        padding: 16px 12px 8px 12px;
+      }
+      .navbar-menu {
+        gap: 18px;
+        font-size: 1rem;
+      }
+    }
+    /* HERO v3 */
+    .hero-v3 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 70px;
+      padding: 70px 64px 48px 64px;
+      background: radial-gradient(circle at 80% 10%, #fff7ec 0%, #fff 100%);
+    }
+    .hero-v3-left {
+      max-width: 670px;
+      flex: 1 1 670px;
+    }
+    .hero-v3 h1 {
+      font-size: 3.4rem;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 12px;
+      line-height: 1.09;
+      letter-spacing: 0;
+    }
+    .hero-v3 h1 .gold-gradient {
+      font-weight: 700;
+      font-size: 3.4rem;
+      background: linear-gradient(90deg,#f7c982 0%, #ecc880 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      display: inline;
+    }
+    .hero-v3-sub {
+      font-size: 1.17rem;
+      color: #6A7684;
+      margin-bottom: 40px;
+      margin-top: 18px;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+    .hero-v3-buttons {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      margin-top: 32px;
+    }
+    .btn-gold-v3 {
+      background: var(--btn-gold-gradient);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 18px 38px 18px 26px;
+      font-weight: 700;
+      font-size: 1.3rem;
+      box-shadow: 0 8px 38px #eacb90a0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: box-shadow 0.2s, background 0.2s;
+      letter-spacing: 0;
+    }
+    .btn-gold-v3:hover {
+      box-shadow: 0 12px 44px #eacb90b3;
+      background: linear-gradient(90deg,#eacb90 0%, #222 100%);
+    }
+    .btn-gold-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border-radius: 50%;
+      padding: 5px;
+    }
+    .btn-black-v3 {
+      background: #fff;
+      color: #222;
+      border: 2px solid #222;
+      border-radius: 10px;
+      padding: 18px 38px 18px 26px;
+      font-weight: 500;
+      font-size: 1.3rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: box-shadow 0.2s;
+      letter-spacing: 0;
+    }
+    .btn-black-v3:hover {
+      box-shadow: 0 8px 38px #eacb9010;
+      background: #f7f7f7;
+    }
+    .hero-v3-right {
+      flex: 1 1 650px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Phone mockup for GIF */
+    .phone-mockup {
+      position: relative;
+      width: 340px;
+      height: 690px;
+      background: #222;
+      border-radius: 34px;
+      border: 11px solid #e0e0e0;
+      box-shadow: 0 8px 36px 0 rgba(0,0,0,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .phone-mockup::before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 11px;
+      width: 56px;
+      height: 7px;
+      background: #bbb;
+      border-radius: 8px;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+    .phone-mockup img {
+      width: 92%;
+      height: 92%;
+      object-fit: contain;
+      border-radius: 28px;
+      background: #111218;
+      box-shadow: 0 0 24px #222b;
+    }
+    @media (max-width: 900px) {
+      .hero-v3 { flex-direction: column; gap: 2em; padding: 32px 12px 18px 12px;}
+      .phone-mockup { width: 240px; height: 470px;}
+    }
+    /* Resto igual que antes */
+    .features-icon,
+    .security-icon,
+    .features-basic-img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 66px;
+      height: 66px;
+      border-radius: 20px;
+      background: #ebb972;
+      margin-right: 0;
+      flex-shrink: 0;
+      box-shadow: 0 1px 6px #f7c98245;
+    }
+    .features-icon img,
+    .security-icon img,
+    .features-basic-img img {
+      width: 40px;
+      height: 40px;
+      display: block;
+    }
+    .solucion-img-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 66px;
+      height: 66px;
+      border-radius: 20px;
+      background: #111 !important;
+      margin-right: 0;
+      flex-shrink: 0;
+      box-shadow: 0 1px 6px #1112;
+    }
+    .solucion-img-icon img {
+      width: 40px;
+      height: 40px;
+      display: block;
+    }
+    .card,
+    .features-basic-card,
+    .security-card,
+    .solucion-card {
+      gap: 22px;
+      padding: 32px 28px;
+    }
+    .cards-row {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+      margin-bottom: 18px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      min-width: 260px;
+      max-width: 340px;
+      flex: 1 1 260px;
+      text-align: left;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      margin-bottom: 0;
+      font-size: 17px;
+    }
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+      margin-top: 0;
+      letter-spacing: 0;
+    }
+    .card p {
+      color: #666;
+      font-size: 1rem;
+      margin: 0;
+      margin-bottom: 0;
+      font-weight: 400;
+    }
+    .solucion-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(420px,1fr));
+      gap: 32px;
+      margin-top: 18px;
+      margin-bottom: 18px;
+    }
+    .solucion-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      min-height: 180px;
+      display: flex;
+      align-items: flex-start;
+      font-size: 17px;
+    }
+    .solucion-card ul {
+      color: #222;
+      font-size: 16px;
+      padding-left: 20px;
+      margin: 0;
+      margin-top: 7px;
+      line-height: 1.7;
+    }
+    .security-row {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: nowrap;
+      margin-top: 18px;
+      margin-bottom: 18px;
+    }
+    .security-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      min-width: 240px;
+      max-width: 330px;
+      flex: 1 1 240px;
+      text-align: left;
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 0;
+      font-size: 17px;
+    }
+    .security-card h3 {
+      font-weight: 500;
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+      margin-top: 0;
+      letter-spacing: 0;
+    }
+    .security-card p {
+      color: #666;
+      font-size: 1rem;
+      margin: 0;
+      margin-bottom: 0;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+    .features-section {
+      margin-top: 48px;
+      margin-bottom: 48px;
+    }
+    .features-grid-basic {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 28px;
+      margin-top: 24px;
+      margin-bottom: 24px;
+    }
+    .features-basic-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      min-width: 220px;
+      max-width: 370px;
+      flex: 1 1 220px;
+      text-align: left;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      font-size: 17px;
+    }
+    .features-basic-card h3 {
+      font-weight: 500;
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+      margin-top: 0;
+      letter-spacing: 0;
+    }
+    .features-basic-card p {
+      color: #666;
+      font-size: 1rem;
+      margin: 0;
+      margin-bottom: 0;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+    .commerce-row {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .commerce-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      padding: 28px;
+      min-width: 240px;
+      max-width: 320px;
+      flex: 1 1 240px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .commerce-icon {
+      font-size: 28px;
+      background: var(--gold);
+      border-radius: 50%;
+      padding: 8px 14px;
+      margin-bottom: 18px;
+      color: #fff;
+      display: inline-block;
+    }
+    .unete-section {
+      background: #111;
+      color: #fff;
+      margin-top: 72px;
+      padding: 48px 0 48px 0;
+      text-align: center;
+    }
+    .unete-section h2 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      color: var(--gold);
+      margin-bottom: 12px;
+      letter-spacing: 0;
+    }
+    .unete-section p {
+      color: #ccc;
+      font-size: 1.25rem;
+      margin-bottom: 32px;
+      font-weight: 400;
+    }
+    .unete-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .unete-btn-gold {
+      background: var(--btn-gold-gradient);
+      color: #fff;
+      border: none;
+      border-radius: 9px;
+      padding: 18px 44px 18px 28px;
+      font-size: 1.13rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 8px 38px #eacb90a0;
+      cursor: pointer;
+      transition: box-shadow 0.2s, background 0.2s;
+      letter-spacing: 0;
+    }
+    .unete-btn-gold:hover {
+      box-shadow: 0 12px 44px #eacb90b3;
+      background: linear-gradient(90deg,#eacb90 0%, #222 100%);
+    }
+    .unete-btn-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.25);
+      border-radius: 50%;
+      padding: 5px;
+    }
+    .unete-btn-gold svg, .unete-btn-white svg {
+      width: 28px;
+      height: 28px;
+      display: block;
+    }
+    .unete-btn-white {
+      background: #fff;
+      color: #222;
+      border: none;
+      border-radius: 9px;
+      padding: 18px 38px 18px 28px;
+      font-size: 1.13rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+      letter-spacing: 0;
+    }
+    .unete-btn-white:hover {
+      box-shadow: 0 8px 38px #eacb9010;
+      background: #f7f7f7;
+    }
+    footer {
+      background: #222;
+      color: #fff;
+      padding: 32px 0 18px 0;
+      text-align: center;
+      font-size: 16px;
+      border-top: 1px solid #333;
+      font-weight: 400;
+    }
+    footer .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    footer .footer-link {
+      color: var(--gold);
+      text-decoration: underline;
+      margin: 0 8px;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0;
+    }
+    footer .footer-logo {
+      width: 34px;
+      height: 34px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    @media (max-width: 1100px) {
+      .features-grid-basic {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 900px) {
+      .hero-v3 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 28px;
+        padding: 32px 12px 18px 12px;
+      }
+      .hero-v3-img-bg { width: 98vw; max-width: 400px; height: auto;}
+      .hero-v3-img { width: 98vw; max-width: 380px; }
+      .hero-v3-left { max-width: 100%; }
+      .solucion-grid { grid-template-columns: 1fr; }
+      .features-grid-basic { grid-template-columns: 1fr; grid-template-rows: none;}
+      .features-grid, .cards-row, .commerce-row {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .security-row {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .features-section { margin-top:32px; margin-bottom:32px;}
+      .unete-buttons { flex-direction: column; gap: 18px;}
+      .navbar { flex-direction: column; padding: 12px 6px;}
+      .navbar-menu { gap: 12px; font-size: 1rem;}
+      .navbar-logo { margin-bottom: 8px;}
+      footer .footer-row { flex-direction: column; gap: 18px;}
+    }
+    section {
+      max-width: 1050px;
+      margin: 48px auto 0;
+      padding: 0 16px;
+    }
+    h2 {
+      font-weight: 750;
+      margin: 0 0 12px 0;
+      font-size: 2.8rem; 
+      text-align: center;
+      letter-spacing: 0;
+    }
+    p {margin: 0 0 16px 0;}
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <span class="logo-img">
+        <img src="assets/logo-cashlink.png" alt="Logo CashLink" width="38" height="38" class="logo-img" />
+      </span>
+      <span class="logo-text">CashLink</span>
+    </div>
+    <div class="navbar-menu">
+      <a href="#problemas" id="nav-problemas">Problemas</a>
+      <a href="#solucion" id="nav-solucion">Solución</a>
+      <a href="#funciones" id="nav-funciones">Funciones</a>
+      <a href="#seguridad" id="nav-seguridad">Seguridad</a>
+      <a href="#beneficios" id="nav-beneficios">Beneficios</a>
+      <a href="#contacto" id="nav-contacto">Contacto</a>
+      <a href="#faq" id="nav-faq">Preguntas frecuentes</a>
+    </div>
+  </nav>
+
+  <!-- HERO NUEVO -->
+  <div class="hero-v3">
+    <div class="hero-v3-left">
+      <h1>
+        CashLink: Tu dinero,<br>
+        <span class="gold-gradient">donde quieras</span><br>
+        y cuando quieras
+      </h1>
+      <p class="hero-v3-sub">
+        La primera billetera digital que convierte tu comunidad en una red segura de cajeros distribuidos.
+      </p>
+      <div class="hero-v3-buttons">
+        <button class="btn-gold-v3">
+          <span class="btn-gold-icon">
+            <!-- SVG móvil -->
+            <svg width="22" height="22" fill="none"><rect x="4" y="3" width="14" height="16" rx="3" stroke="#fff" stroke-width="2"/><circle cx="11" cy="16" r="1.2" fill="#fff"/></svg>
+          </span>
+          Descargar App
+        </button>
+      </div>
+    </div>
+    <div class="hero-v3-right">
+      <!-- Mockup de celular mostrando el GIF animado -->
+      <div class="phone-mockup">
+        <img src="assets/cashlink-demo.gif" alt="Demo animado CashLink App" />
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEMAS QUE RESOLVEMOS -->
+  <section id="problemas">
+    <h2>Problemas que resolvemos</h2>
+    <p style="color:#666; text-align:center; margin-bottom:36px;">
+      Identificamos los desafíos financieros más comunes en Colombia
+    </p>
+    <div class="cards-row">
+      <div class="card">
+        <h3>
+          <span class="features-icon"><img src="assets/icons/peligro.png" alt="Cajeros escasos"></span>
+          Cajeros escasos y costosos
+        </h3>
+        <p>Los usuarios dependen de cajeros automáticos o corresponsales bancarios, limitando el acceso a efectivo en zonas rurales.</p>
+      </div>
+      <div class="card">
+        <h3>
+          <span class="features-icon"><img src="assets/icons/peligro.png" alt="Retiro de efectivo"></span>
+          Dificultad para retirar efectivo
+        </h3>
+        <p>Las billeteras digitales no ofrecen retiros de dinero en efectivo o acceso fuera del sistema digital.</p>
+      </div>
+      <div class="card">
+        <h3>
+          <span class="features-icon"><img src="assets/icons/peligro.png" alt="Comercios"></span>
+          Comercios con liquidez insuficiente
+        </h3>
+        <p>Pequeños comercios necesitan ofrecer retiros, pero enfrentan dificultades en administración y seguros de intermediación.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUESTRA SOLUCIÓN NUEVO -->
+  <section id="solucion">
+    <h2>
+      Nuestra solución
+    </h2>
+    <p style="color:#666; text-align:center; margin-bottom:36px;">
+      CashLink es una billetera digital que permite intercambiar efectivo y dinero digital en cualquier momento
+    </p>
+    <div class="solucion-grid">
+      <div class="solucion-card">
+        <span class="solucion-img-icon">
+          <img src="assets/icons/store.png" alt="Puntos de cambio seguros">
+        </span>
+        <div>
+          <div style="font-weight:500; font-size:1.15rem;">Puntos de cambio seguros</div>
+          <div style="color:#666; font-size:1.08rem; margin-bottom:7px;">Red de comercios aliados para intercambios seguros</div>
+          <ul>
+            <li>Convenios con cafés, farmacias y universidades</li>
+            <li>Centros comerciales y estaciones de servicio</li>
+            <li>Coworkings y espacios confiables</li>
+            <li>Validación en tiempo real</li>
+          </ul>
+        </div>
+      </div>
+      <div class="solucion-card">
+        <span class="solucion-img-icon">
+          <img src="assets/icons/network.png" alt="Red Amiga">
+        </span>
+        <div>
+          <div style="font-weight:500; font-size:1.15rem;">Red Amiga</div>
+          <div style="color:#666; font-size:1.08rem; margin-bottom:7px;">Conexiones dentro de tu comunidad</div>
+          <ul>
+            <li>Trust Score dinámico personalizado</li>
+            <li>Grupos cerrados de confianza</li>
+            <li>Validación de identidad segura</li>
+            <li>Historial de transacciones</li>
+          </ul>
+        </div>
+      </div>
+      <div class="solucion-card">
+        <span class="solucion-img-icon">
+          <img src="assets/icons/chat.png" alt="Chat comunitario">
+        </span>
+        <div>
+          <div style="font-weight:500; font-size:1.15rem;">Chat comunitario anónimo</div>
+          <div style="color:#666; font-size:1.08rem; margin-bottom:7px;">Encuentra intercambios en tu comunidad</div>
+          <ul>
+            <li>Publicaciones anónimas de necesidades</li>
+            <li>Visible solo para tu comunidad</li>
+            <li>Sistema de contacto seguro</li>
+            <li>Moderación automática</li>
+          </ul>
+        </div>
+      </div>
+      <div class="solucion-card">
+        <span class="solucion-img-icon">
+          <img src="assets/icons/location.png" alt="Vecinos Cercanos">
+        </span>
+        <div>
+          <div style="font-weight:500; font-size:1.15rem;">Sistema de Vecinos Cercanos</div>
+          <div style="color:#666; font-size:1.08rem; margin-bottom:7px;">Conecta con personas cercanas geográficamente</div>
+          <ul>
+            <li>Radio geográfico personalizable</li>
+            <li>Escrow digital automático</li>
+            <li>Geolocalización en tiempo real</li>
+            <li>Trust Score global</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUNCIONES BÁSICAS DE BILLETERA (2 filas de 3)-->
+  <section id="funciones" class="features-section">
+    <h2>Funciones básicas de billetera</h2>
+    <p style="color:#666; text-align:center; margin-bottom:36px;">
+      Todas las funcionalidades que esperas de una billetera digital moderna
+    </p>
+    <div class="features-grid-basic">
+      <div class="features-basic-card">
+        <span class="features-basic-img">
+          <img src="assets/icons/transfer.png" alt="Transferencias instantáneas">
+        </span>
+        <div>
+          <h3>Transferencias instantáneas</h3>
+          <p>Recibe, guarda y transfiere dinero digital de forma inmediata entre usuarios.</p>
+        </div>
+      </div>
+      <div class="features-basic-card">
+        <span class="features-basic-img">
+          <img src="assets/icons/qr.png" alt="Pagos QR">
+        </span>
+        <div>
+          <h3>Pagos con QR y POS virtual</h3>
+          <p>Paga en comercios usando códigos QR o nuestro sistema de POS virtual.</p>
+        </div>
+      </div>
+      <div class="features-basic-card">
+        <span class="features-basic-img">
+          <img src="assets/icons/send.png" alt="Envío y recepción">
+        </span>
+        <div>
+          <h3>Envío y recepción</h3>
+          <p>Transfiere dinero entre usuarios de forma rápida y segura.</p>
+        </div>
+      </div>
+      <div class="features-basic-card">
+        <span class="features-basic-img">
+          <img src="assets/icons/credit.png" alt="Microcréditos">
+        </span>
+        <div>
+          <h3>Microcréditos</h3>
+          <p>Accede a microcréditos de bajo monto como solución rápida de liquidez.</p>
+        </div>
+      </div>
+      <div class="features-basic-card">
+        <span class="features-basic-img">
+          <img src="assets/icons/piggy.png" alt="Ahorro digital">
+        </span>
+        <div>
+          <h3>Ahorro digital</h3>
+          <p>Herramientas de ahorro digital y analítica detallada de gastos.</p>
+        </div>
+      </div>
+      <div class="features-basic-card">
+        <span class="features-basic-img">
+          <img src="assets/icons/fingerprint.png" alt="Validación biométrica">
+        </span>
+        <div>
+          <h3>Validación biométrica</h3>
+          <p>Seguridad avanzada con validación biométrica y proceso KYC completo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEGURIDAD REFORZADA -->
+  <section id="seguridad">
+    <h2>Seguridad reforzada</h2>
+    <p style="color:#666; text-align:center; margin-bottom:36px;">
+      Tu seguridad es nuestra prioridad, con múltiples capas de protección
+    </p>
+    <div class="security-row">
+      <div class="security-card">
+        <span class="security-icon"><img src="assets/icons/shield.png" alt="Escrow digital"></span>
+        <div>
+          <h3>Escrow digital</h3>
+          <p>Sistema de depósito en garantía y reputación dinámica.</p>
+        </div>
+      </div>
+      <div class="security-card">
+        <span class="security-icon"><img src="assets/icons/location-pin.png" alt="Geolocalización"></span>
+        <div>
+          <h3>Geolocalización</h3>
+          <p>Seguimiento en tiempo real para todas las transacciones.</p>
+        </div>
+      </div>
+      <div class="security-card">
+        <span class="security-icon"><img src="assets/icons/eye.png" alt="Ubicación compartida"></span>
+        <div>
+          <h3>Ubicación compartida</h3>
+          <p>Opción de compartir ubicación con contactos de confianza.</p>
+        </div>
+      </div>
+      <div class="security-card">
+        <span class="security-icon"><img src="assets/icons/policy.png" alt="Póliza de respaldo"></span>
+        <div>
+          <h3>Póliza de respaldo</h3>
+          <p>Cobertura en caso de robo comprobado y verificado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS PARA COMERCIOS ALIADOS -->
+  <section id="beneficios">
+    <h2>Beneficios para comercios aliados</h2>
+    <p style="color:#666; text-align:center; margin-bottom:32px;">
+      Únete a nuestra red y obtén beneficios exclusivos
+    </p>
+    <div class="commerce-row">
+      <div class="commerce-card">
+        <span class="commerce-icon">💰</span>
+        <h3>Comisiones por intercambio</h3>
+        <p>Gana como comercio cada vez que una transacción realizada es establecida.</p>
+      </div>
+      <div class="commerce-card">
+        <span class="commerce-icon">📈</span>
+        <h3>Mayor tráfico</h3>
+        <p>Atrae más clientes que buscan puntos de intercambio cercanos.</p>
+      </div>
+      <div class="commerce-card">
+        <span class="commerce-icon">🖥️</span>
+        <h3>Digitalización</h3>
+        <p>Recibe dinero electrónico y moderniza tu negocio.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN FINAL (ahora Contacto/FAQ) -->
+  <section id="contacto" class="unete-section">
+    <h2>¿Tienes dudas o quieres conocer más?</h2>
+    <p>Ponte en contacto con nuestro equipo o revisa las preguntas frecuentes para resolver todas tus inquietudes sobre CashLink.</p>
+    <div class="unete-buttons">
+      <a href="mailto:contacto@cashlink.com" class="unete-btn-gold" style="text-decoration:none;">
+        <span class="unete-btn-icon">
+          <svg width="28" height="28" fill="none">
+            <circle cx="14" cy="14" r="14" fill="#F4C17A"/>
+            <path d="M9 19v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1" stroke="#fff" stroke-width="2"/>
+            <circle cx="14" cy="11" r="2.5" stroke="#fff" stroke-width="2"/>
+          </svg>
+        </span>
+        Contacto
+      </a>
+      <a href="#faq" class="unete-btn-white" style="text-decoration:none;">
+        <span class="unete-btn-icon">
+          <svg width="28" height="28" fill="none">
+            <rect width="28" height="28" rx="7" fill="#222"/>
+            <path d="M8 14h12v5a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-5zm0-2V9a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        Preguntas Frecuentes
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-row">
+      <span>
+        <img src="assets/logo-cashlink.png" alt="Logo footer" class="footer-logo" />
+      </span>
+      <span>CashLink Colombia</span>
+      <a class="footer-link" href="#">Términos y Condiciones</a>
+      <a class="footer-link" href="#">Política de Privacidad</a>
+    </div>
+    <div style="color:#888; font-size:14px;">
+      © 2025 CashLink Colombia
+    </div>
+  </footer>
+
+  <script>
+    // Menu hover dorado y click vuelve negro
+    const navLinks = document.querySelectorAll('.navbar-menu a');
+    navLinks.forEach(link => {
+      link.addEventListener('mouseenter', function() {
+        this.style.color = '#F4C17A';
+      });
+      link.addEventListener('mouseleave', function() {
+        this.style.color = '#222';
+      });
+      link.addEventListener('click', function(e){
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        this.style.color = '#222';
+        // Scroll suave
+        const target = document.getElementById(this.getAttribute('href').replace('#',''));
+        if (target){
+          window.scrollTo({ top: target.offsetTop - 48, behavior: 'smooth' });
+        }
+        e.preventDefault();
+      });
+    });
+  </script>
+</body>
+</html>
